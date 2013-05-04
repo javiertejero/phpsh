@@ -957,7 +957,8 @@ Type 'e' to open emacs or 'V' to open vim to %s: %s" %
         # extract function name and optional leading "=" from line
         if funcall.startswith("return "):
             funcall = funcall[6:].lstrip()
-        m = re.compile(" *([A-Za-z_][A-Za-z0-9_]*) *[(]").match(funcall)
+
+        m = re.compile(" *([A-Za-z_][A-Za-z0-9_:>-]*) *[(]").match(funcall)
         if not m:
             self.print_error("Invalid function call syntax")
             return False
